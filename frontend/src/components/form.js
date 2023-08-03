@@ -1,66 +1,89 @@
-import React , {useRef} from "react";
-import { styled } from "styled-components";
+import React, { useRef, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-
-const FormContainer = styled.form`
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    flex-wrap: wrap;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 5px #ccc;
-    border-radius: 5px;
-`
-
-const InputArea = styled.div`
-    display: flex;
-    flex-direction: column;
-
-`
-
-const Label = styled.label``
-
-const Input = styled.input`
-    width: 120px;
-    padding: 0 10px;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-    height: 40px;
-`
-
-const Btn = styled.button`
-    padding: 10px;
-    margin-top: 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: none;
-    background-color: pink;
-    color: white;
-    height: 42px;
-`
-
-const Form = ({onEdit}) => {
+function Form({ onEdit, setOnEdit, getClientes }) {
 
     const ref = useRef();
 
+    useEffect(() => {
+        if (onEdit) {
+            const cliente = ref.current;
+
+            cliente.nome.value = onEdit.nome;
+            cliente.endereco.value = onEdit.endereco;
+            cliente.telefone.value = onEdit.telefone;
+        }
+    }, [onEdit]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const cliente = ref.current;
+
+        if (
+            !cliente.nome.value ||
+            !cliente.endereco.value ||
+            !cliente.telefone.value
+        ) {
+            return toast.warn("Preencha todos os campos")
+        }
+
+        if (onEdit) {
+            await axios
+                .put("http://localhost:8800/clientes/" + onEdit.id_cliente, {
+                    nome: cliente.nome.value,
+                    endereco: cliente.endereco.value,
+                    telefone: cliente.telefone.value,
+                })
+                .then(({ data }) => toast.success(data))
+                .catch(({ data }) => toast.error(data));
+        } else {
+            await axios
+                .post("http://localhost:8800/clientes", {
+                    nome: cliente.nome.value,
+                    endereco: cliente.endereco.value,
+                    telefone: cliente.telefone.value,
+                })
+                .then(({ data }) => toast.success(data))
+                .catch(({ data }) => toast.error(data));
+        }
+
+        cliente.nome.value = "";
+        cliente.endereco.value = "";
+        cliente.telefone.value = "";
+
+        setOnEdit(null);
+        getClientes();
+
+    }
+
     return (
-        <FormContainer ref={ref}>
-            <InputArea>
+        <div className="formContainer">
 
-                <Label>Nome</Label>
-                <Input name="nome" />    {/* !! name="<NomeDoAtributoNoBanco>" */}
-                <Label>Endereço</Label>
-                <Input name="endereco" />
-                <Label>Telefone</Label>
-                <Input name="telefone" />
-                <Label>E-mail</Label>
-                <Input type="email" name="email" />
+            <h3>FORM</h3>
 
-                <Btn type="submit">Enviar</Btn>
+            <form ref={ref} onSubmit={handleSubmit}>
 
-            </InputArea>
-        </FormContainer>
+                <div className="inputArea">
+                    <label>Nome</label>
+                    <input name="nome"/>
+                </div>
+
+                <div className="inputArea">
+                    <label>Endereço</label>
+                    <input name="endereco"/>
+                </div>
+
+                <div className="inputArea">
+                    <label>Telefone</label>
+                    <input name="telefone" />
+                </div>
+
+                <button type="submit">SALVAR</button>
+
+            </form>
+        </div>
     );
 };
 
