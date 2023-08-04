@@ -1,4 +1,4 @@
-import "../styles/cliente.css";
+import "../styles/App.css";
 import Form from "../components/Form.js"
 import Grid from "../components/Grid.js"
 import { useState, useEffect } from "react";
@@ -30,7 +30,7 @@ const Cliente = () => {
            <select name="" id="">{clientes.map(cliente => (
                 <option value={cliente.id}>{cliente.nome}</option>
            ))}</select>
-           <Form onEdit={onEdit} setOnEdit={setOnEdit} getClientes={getClientes} />
+           <Form onEdit={onEdit} setOnEdit={setOnEdit} clientes={clientes} getClientes={getClientes} />
            <Grid clientes={clientes} setOnEdit={setOnEdit} getClientes={getClientes}/>
            
         </div>
