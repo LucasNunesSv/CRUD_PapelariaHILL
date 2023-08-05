@@ -23,10 +23,9 @@ function Form({ onEdit, setOnEdit, getClientes }) {
 
         if (
             !cliente.nome.value ||
-            !cliente.endereco.value ||
             !cliente.telefone.value
         ) {
-            return toast.warn("Preencha todos os campos")
+            return toast.warn("Preencha todos os campos obrigatórios")
         }
 
         if (onEdit) {

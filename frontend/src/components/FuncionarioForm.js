@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionarios, cargos, getCargos }) {
+function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionarios, cargos }) {
 
     const ref = useRef();
 
@@ -29,7 +29,7 @@ function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionar
             !funcionario.telefone.value ||
             !funcionario.id_cargo.value
         ) {
-            return toast.warn("Preencha todos os campos")
+            return toast.warn("Preencha todos os campos obrigatórios")
         }
 
         if (onEditFuncionario) {

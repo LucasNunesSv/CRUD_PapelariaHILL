@@ -44,7 +44,7 @@ const Funcionario = () => {
            <select name="" id="">{cargos.map(cargo => (
                 <option value={cargo.id_cargo}>{cargo.descricao}</option>
            ))}</select>
-           <FuncionarioForm onEditFuncionario={onEditFuncionario} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} cargos={cargos} getCargos={getCargos}/>
+           <FuncionarioForm onEditFuncionario={onEditFuncionario} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} cargos={cargos} />
            <FuncionarioGrid funcionarios={funcionarios} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} cargos={cargos}/>
            
         </div>

@@ -1,40 +1,54 @@
-import "../styles/App.css";
-import Form from "../components/Form.js"
-import Grid from "../components/Grid.js"
+import "../styles/produto.css";
+import ProdutoForm from "../components/ProdutoForm.js"
+import ProdutoGrid from "../components/ProdutoGrid.js"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Cliente = () => {
+const Produto = () => {
 
-    const [clientes, setClientes] = useState([]);
-    const [onEdit, setOnEdit] = useState(null);
+    const [produtos, setProdutos] = useState([]);
+    const [categorias, setCategorias] = useState([]);
+    const [onEditProduto, setOnEditProduto] = useState(null);
 
-    const getClientes = async () => {
+    const getProdutos = async () => {
         try{
-            const res = await axios.get("http://localhost:8800/clientes");
-            setClientes(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+            const res = await axios.get("http://localhost:8800/produtos");
+            setProdutos(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+        }catch (error) {
+            toast.error(error);
+        }
+    }
+
+    const getCategorias = async () => {
+        try{
+            const res1 = await axios.get("http://localhost:8800/categorias");
+            setCategorias(res1.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
         }catch (error) {
             toast.error(error);
         }
     }
 
     useEffect(() => {
-        getClientes();
-    }, [setClientes]);
+        getProdutos();
+    }, [setProdutos]);
+
+    useEffect(() => {
+        getCategorias();
+    }, [setCategorias]);
 
     return (
         <div className="container">
-           <h2>CLIENTES</h2> 
-           <select name="" id="">{clientes.map(cliente => (
-                <option value={cliente.id}>{cliente.nome}</option>
+           <h2>PRODUTOS</h2> 
+           <select name="" id="">{produtos.map(produto => (
+                <option value={produto.id_produto}>{produto.nome}</option>
            ))}</select>
-           <Form onEdit={onEdit} setOnEdit={setOnEdit} clientes={clientes} getClientes={getClientes} />
-           <Grid clientes={clientes} setOnEdit={setOnEdit} getClientes={getClientes}/>
+           <ProdutoForm onEditProduto={onEditProduto} setOnEditProduto={setOnEditProduto} getProdutos={getProdutos} categorias={categorias} />
+           <ProdutoGrid produtos={produtos} setOnEditProduto={setOnEditProduto} getProdutos={getProdutos} categorias={categorias}/>
            
         </div>
     );
 };
 
-export default Cliente;
+export default Produto;
