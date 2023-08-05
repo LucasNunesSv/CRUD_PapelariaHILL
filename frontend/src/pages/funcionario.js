@@ -10,6 +10,7 @@ const Funcionario = () => {
 
     const [funcionarios, setfuncionarios] = useState([]);
     const [onEditFuncionario, setOnEditFuncionario] = useState(null);
+    const [cargos, setCargos] = useState([]);
 
     const getFuncionarios = async () => {
         try{
@@ -20,18 +21,31 @@ const Funcionario = () => {
         }
     }
 
+    const getCargos = async () => {
+        try{
+            const res1 = await axios.get("http://localhost:8800/cargos");
+            setCargos(res1.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+        }catch (error) {
+            toast.error(error);
+        }
+    }
+
     useEffect(() => {
         getFuncionarios();
     }, [setfuncionarios]);
 
+    useEffect(() => {
+        getCargos();
+    }, [setCargos]);
+
     return (
         <div className="container">
            <h2>FUNCIONARIOS</h2> 
-           <select name="" id="">{funcionarios.map(funcionario => (
-                <option value={funcionario.id}>{funcionario.nome}</option>
+           <select name="" id="">{cargos.map(cargo => (
+                <option value={cargo.id_cargo}>{cargo.descricao}</option>
            ))}</select>
-           <FuncionarioForm onEditFuncionario={onEditFuncionario} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} />
-           <FuncionarioGrid funcionarios={funcionarios} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios}/>
+           <FuncionarioForm onEditFuncionario={onEditFuncionario} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} cargos={cargos} getCargos={getCargos}/>
+           <FuncionarioGrid funcionarios={funcionarios} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} cargos={cargos}/>
            
         </div>
     );
