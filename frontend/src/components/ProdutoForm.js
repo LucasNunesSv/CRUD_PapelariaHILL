@@ -11,7 +11,6 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
             const produto = ref.current;
 
             produto.nome.value = onEditProduto.nome;
-            produto.descricao.value = onEditProduto.descricao;
             produto.preco_unitario.value = onEditProduto.preco_unitario;
             produto.marca.value = onEditProduto.marca;
             produto.estoque.value = onEditProduto.estoque;
@@ -21,14 +20,13 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
     }, [onEditProduto]);
 
     const handleSubmit = async (e) => {
-        
+
         e.preventDefault();
 
         const produto = ref.current;
 
         if (
             !produto.nome.value ||
-            !produto.descricao.value ||
             !produto.preco_unitario.value ||
             !produto.marca.value ||
             !produto.estoque.value ||
@@ -42,7 +40,6 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
             await axios
                 .put("http://localhost:8800/produtos/" + onEditProduto.id_produto, {
                     nome: produto.nome.value,
-                    descricao: produto.descricao.value,
                     preco_unitario: produto.preco_unitario.value,
                     marca: produto.marca.value,
                     estoque: produto.estoque.value,
@@ -54,7 +51,6 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
             await axios
                 .post("http://localhost:8800/produtos", {
                     nome: produto.nome.value,
-                    descricao: produto.descricao.value,
                     preco_unitario: produto.preco_unitario.value,
                     marca: produto.marca.value,
                     estoque: produto.estoque.value,
@@ -65,7 +61,6 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
         }
 
         produto.nome.value = ""
-        produto.descricao.value = ""
         produto.preco_unitario.value = ""
         produto.marca.value = ""
         produto.estoque.value = ""
@@ -86,11 +81,6 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
                 <div className="inputArea">
                     <label>Nome</label>
                     <input name="nome" />
-                </div>
-
-                <div className="inputArea">
-                    <label>Descrição</label>
-                    <input name="descricao" />
                 </div>
 
                 <div className="inputArea">

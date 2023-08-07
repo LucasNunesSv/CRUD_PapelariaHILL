@@ -15,7 +15,7 @@ const Produto = () => {
     const getProdutos = async () => {
         try{
             const res = await axios.get("http://localhost:8800/produtos");
-            setProdutos(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+            setProdutos(res.data);
         }catch (error) {
             toast.error(error);
         }
@@ -23,8 +23,8 @@ const Produto = () => {
 
     const getCategorias = async () => {
         try{
-            const res1 = await axios.get("http://localhost:8800/categorias");
-            setCategorias(res1.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+            const res = await axios.get("http://localhost:8800/categorias");
+            setCategorias(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
         }catch (error) {
             toast.error(error);
         }

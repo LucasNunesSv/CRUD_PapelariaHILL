@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       {/* <Cliente /> */}
       {/* <Funcionario /> */}
-      <Produto />
-      {/* <Pedido /> */}
+      {/* <Produto /> */}
+      <Pedido />
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} /> 
     </div>
   );

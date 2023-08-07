@@ -29,7 +29,6 @@ function ProdutoGrid ({ produtos, setOnEditProduto, getProdutos, categorias }) {
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Descrição</th>
                         <th>Preço Unitário</th>
                         <th>Marca</th>
                         <th>Estoque</th>
@@ -42,7 +41,6 @@ function ProdutoGrid ({ produtos, setOnEditProduto, getProdutos, categorias }) {
                     {produtos.map((item, i) => (
                         <tr key={i}>
                             <td width="30%">{item.nome}</td>
-                            <td width="30%">{item.descricao}</td>
                             <td width="20%">{item.preco_unitario}</td>
                             <td width="30%">{item.marca}</td>
                             <td width="20%">{item.estoque}</td>

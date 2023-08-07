@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-function Form({ onEdit, setOnEdit, getClientes }) {
+function ClienteForm({ onEdit, setOnEdit, getClientes }) {
 
     const ref = useRef();
 
@@ -86,4 +86,4 @@ function Form({ onEdit, setOnEdit, getClientes }) {
     );
 };
 
-export default Form;
+export default ClienteForm;

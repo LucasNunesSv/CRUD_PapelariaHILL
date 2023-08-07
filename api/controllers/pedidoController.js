@@ -16,7 +16,7 @@ export const getPedidos = (_, res) => {
 
 export const getPedido = (req, res) => {
 
-    const q = "SELECT * FROM cliente WHERE id_cliente = ?"; // !!! ATUALIZAR
+    const q = "SELECT * FROM pedido WHERE id_pedido = ?"; // !!! ATUALIZAR
 
     db.query(q, [req.params.id], (err, data) => {
 
@@ -30,12 +30,17 @@ export const getPedido = (req, res) => {
 
 export const addPedido = (req, res) => {
 
-    const q = "INSERT INTO cliente(nome, endereco, telefone) VALUES(?)"; // !!! ATUALIZAR
+    const q = "INSERT INTO pedido(data, valor_total, descricao, quantidade, id_funcionario, id_cliente, id_produto, id_metodo_pagamento) VALUES(?)"; // !!! ATUALIZAR
 
     const values = [
-        req.body.nome,
-        req.body.endereco,
-        req.body.telefone,
+        req.body.data,
+        req.body.valor_total,
+        req.body.descricao,
+        req.body.quantidade,
+        req.body.id_funcionario,
+        req.body.id_cliente,
+        req.body.id_produto,
+        req.body.id_metodo_pagamento,
     ];
 
     db.query(q, [values], (err) => {
@@ -48,12 +53,17 @@ export const addPedido = (req, res) => {
 
 export const updatePedido = (req, res) => {
 
-    const q = "UPDATE cliente SET nome = ?, endereco = ?, telefone = ? WHERE id_cliente = ?"; // !!! ATUALIZAR
+    const q = "UPDATE pedido SET data = ?, valor_total = ?, descricao = ?, quantidade = ?, id_funcionario = ?, id_cliente = ?, id_produto = ?, id_metodo_pagamento = ? WHERE id_pedido = ?"; 
 
     const values = [
-        req.body.nome,
-        req.body.endereco,
-        req.body.telefone,
+        req.body.data,
+        req.body.valor_total,
+        req.body.descricao,
+        req.body.quantidade,
+        req.body.id_funcionario,
+        req.body.id_cliente,
+        req.body.id_produto,
+        req.body.id_metodo_pagamento,
     ];
 
     db.query(q, [...values, req.params.id], (err) => {
@@ -65,7 +75,7 @@ export const updatePedido = (req, res) => {
 }
 
 export const deletePedido = (req, res) => {
-    const q = "DELETE FROM cliente WHERE id_cliente = ?"; // !!! ATUALIZAR
+    const q = "DELETE FROM pedido WHERE id_pedido = ?"; 
 
     db.query(q, [req.params.id], (err) => {
         if(err) return res.json(err);

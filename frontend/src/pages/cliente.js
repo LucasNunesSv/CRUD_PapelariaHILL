@@ -1,6 +1,6 @@
 import "../styles/cliente.css";
-import Form from "../components/Form.js"
-import Grid from "../components/Grid.js"
+import ClienteForm from "../components/ClienteForm.js"
+import ClienteGrid from "../components/ClienteGrid.js"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -14,7 +14,9 @@ const Cliente = () => {
     const getClientes = async () => {
         try{
             const res = await axios.get("http://localhost:8800/clientes");
-            setClientes(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+            // setClientes(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+             setClientes(res.data);
+             console.log(res.data)
         }catch (error) {
             toast.error(error);
         }
@@ -30,8 +32,8 @@ const Cliente = () => {
            <select name="" id="">{clientes.map(cliente => (
                 <option value={cliente.id}>{cliente.nome}</option>
            ))}</select>
-           <Form onEdit={onEdit} setOnEdit={setOnEdit} getClientes={getClientes} />
-           <Grid clientes={clientes} setOnEdit={setOnEdit} getClientes={getClientes}/>
+           <ClienteForm onEdit={onEdit} setOnEdit={setOnEdit} getClientes={getClientes} />
+           <ClienteGrid clientes={clientes} setOnEdit={setOnEdit} getClientes={getClientes}/>
            
         </div>
     );

@@ -23,8 +23,8 @@ const Funcionario = () => {
 
     const getCargos = async () => {
         try{
-            const res1 = await axios.get("http://localhost:8800/cargos");
-            setCargos(res1.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+            const res = await axios.get("http://localhost:8800/cargos");
+            setCargos(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
         }catch (error) {
             toast.error(error);
         }

@@ -3,7 +3,7 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios"; 
 
-function Grid ({ clientes, setOnEdit, getClientes }) {
+function ClienteGrid ({ clientes, setOnEdit, getClientes }) {
 
     const handleEdit = (item) => {
         setOnEdit(item);
@@ -56,7 +56,7 @@ function Grid ({ clientes, setOnEdit, getClientes }) {
     );
 }
 
-export default Grid;
+export default ClienteGrid;
 
 // onClick={() => handleEdit(item.id)}
 // onClick={() => handleDelete(item.id)} 

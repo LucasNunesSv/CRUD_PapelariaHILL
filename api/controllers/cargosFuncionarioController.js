@@ -2,7 +2,7 @@ import {db} from "../infra/database.js";
 
 export const getCargos = (_, res) => {
 
-    const q = "SELECT * FROM cargos";
+    const q = "SELECT * FROM cargo";
 
     db.query(q, (err, data) => {
 

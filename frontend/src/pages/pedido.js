@@ -1,15 +1,28 @@
-import "../styles/App.css";
-import Form from "../components/Form.js"
-import Grid from "../components/Grid.js"
+import "../styles/pedido.css";
+import PedidoForm from "../components/PedidoForm.js"
+import PedidoGrid from "../components/PedidoGrid.js"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Cliente = () => {
+const Pedido = () => {
 
+    const [pedidos, setPedidos] = useState([]);
     const [clientes, setClientes] = useState([]);
-    const [onEdit, setOnEdit] = useState(null);
+    const [funcionarios, setFuncionarios] = useState([]);
+    const [produtos, setProdutos] = useState([]);
+    const [pagamentos, setPagamentos] = useState([]);
+    const [onEditPedido, setOnEditPedido] = useState(null);
+
+    const getPedidos = async () => {
+        try{
+            const res = await axios.get("http://localhost:8800/pedidos");
+            setPedidos(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+        }catch (error) {
+            toast.error(error);
+        }
+    }
 
     const getClientes = async () => {
         try{
@@ -20,21 +33,63 @@ const Cliente = () => {
         }
     }
 
+    const getFuncionarios = async () => {
+        try{
+            const res = await axios.get("http://localhost:8800/funcionarios");
+            setFuncionarios(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
+        }catch (error) {
+            toast.error(error);
+        }
+    }
+
+    const getProdutos = async () => {
+        try{
+            const res = await axios.get("http://localhost:8800/produtos");
+            setProdutos(res.data);
+        }catch (error) {
+            toast.error(error);
+        }
+    }
+
+    const getPagamentos = async () => {
+        try{
+            const res = await axios.get("http://localhost:8800/pagamentos");
+            setPagamentos(res.data);
+        }catch (error) {
+            toast.error(error);
+        }
+    }
+
+    useEffect(() => {
+        getPedidos();
+    }, [setPedidos]);
+
     useEffect(() => {
         getClientes();
     }, [setClientes]);
 
+    useEffect(() => {
+        getFuncionarios();
+    }, []);
+
+    useEffect(() => {
+        getProdutos();
+    }, []);
+
+    useEffect(() => {
+        getPagamentos();
+    }, [setPagamentos]);
+
     return (
         <div className="container">
-           <h2>CLIENTES</h2> 
-           <select name="" id="">{clientes.map(cliente => (
-                <option value={cliente.id}>{cliente.nome}</option>
+           <h2>PEDIDOS</h2> 
+           <select name="" id="">{pagamentos.map(pagamento => (
+                <option value={pagamento.id_metodo_pagamento}>{pagamento.descricao}</option>
            ))}</select>
-           <Form onEdit={onEdit} setOnEdit={setOnEdit} clientes={clientes} getClientes={getClientes} />
-           <Grid clientes={clientes} setOnEdit={setOnEdit} getClientes={getClientes}/>
-           
+           <PedidoForm onEditPedido={onEditPedido} setOnEditPedido={setOnEditPedido} getPedidos={getPedidos} clientes={clientes} funcionarios={funcionarios} produtos={produtos} pagamentos={pagamentos} />
+           <PedidoGrid pedidos={pedidos} setOnEditPedido={setOnEditPedido} getPedidos={getPedidos} clientes={clientes} funcionarios={funcionarios} produtos={produtos} pagamentos={pagamentos} />
         </div>
     );
 };
 
-export default Cliente;
+export default Pedido;
