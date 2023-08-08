@@ -51,7 +51,7 @@ function FuncionarioGrid ({ funcionarios, setOnEditFuncionario, getFuncionarios,
                             <td width="30%">{item.endereco}</td>
                             <td width="20%">{item.telefone}</td>
                             <td width="20%">{cargos.map(cargo => {
-                                if(item.id_cargo == cargo.id_cargo){
+                                if(item.id_cargo === cargo.id_cargo){
                                     return cargo.descricao
                                 }
                             })}</td>

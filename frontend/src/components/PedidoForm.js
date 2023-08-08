@@ -95,7 +95,7 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
 
                 <div className="inputArea">
                     <label>Data da Venda</label>
-                    <input  name="data" />
+                    <input type="date" name="data" />
                 </div>
 
                 <div className="inputArea">

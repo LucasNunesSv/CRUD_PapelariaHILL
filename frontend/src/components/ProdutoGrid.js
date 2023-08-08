@@ -45,7 +45,7 @@ function ProdutoGrid ({ produtos, setOnEditProduto, getProdutos, categorias }) {
                             <td width="30%">{item.marca}</td>
                             <td width="20%">{item.estoque}</td>
                             <td width="20%">{categorias.map(categoria => {
-                                if(item.id_categoria_produto == categoria.id_categoria_produto){
+                                if(item.id_categoria_produto === categoria.id_categoria_produto){
                                     return categoria.descricao
                                 }
                             })}</td>

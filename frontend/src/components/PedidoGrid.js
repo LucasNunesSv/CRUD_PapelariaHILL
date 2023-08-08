@@ -53,17 +53,17 @@ function PedidoGrid ({ pedidos, setOnEditPedido, getPedidos, clientes, funcionar
                                 }
                             })}</td>
                             <td width="20%">{clientes.map(cliente => {
-                                if(item.id_cliente == cliente.id_cliente){
+                                if(item.id_cliente === cliente.id_cliente){
                                     return cliente.nome
                                 }
                             })}</td>
                             <td width="20%">{produtos.map(produto => {
-                                if(item.id_produto == produto.id_produto){
+                                if(item.id_produto === produto.id_produto){
                                     return produto.nome
                                 }
                             })}</td>
                             <td width="20%">{pagamentos.map(pagamento => {
-                                if(item.id_metodo_pagamento == pagamento.id_metodo_pagamento){
+                                if(item.id_metodo_pagamento === pagamento.id_metodo_pagamento){
                                     return pagamento.descricao
                                 }
                             })}</td>
