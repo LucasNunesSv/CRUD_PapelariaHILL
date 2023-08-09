@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
+import Logo from '../assets/mountainLogoDesign.png'
+import '../styles/NavBar.css'
 
 const NavBar = () => {
+
     return (
 
         <div class="container">
@@ -8,9 +11,9 @@ const NavBar = () => {
 
                 <div class="menuContainer">
 
-                    {/* <img src={logoEscrita} /> */}
+                    <img class="logoNavbar" src={Logo} />
 
-                    <ul className="navBarContainer">
+                    <ul>
                         <li>
                             <Link className='Links' to='/'>Home</Link>
                         </li>

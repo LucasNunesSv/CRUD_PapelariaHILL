@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavBar from "../components/NavBar.js";
 
 const Cliente = () => {
 
@@ -13,7 +14,7 @@ const Cliente = () => {
 
     const getClientes = async () => {
         try {
-            const res = await axios.get("http://localhost:8800/clientes");
+            const res = await axios.get("http://localhost:3306/clientes");
             // setClientes(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
             setClientes(res.data);
             console.log(res.data)
@@ -28,7 +29,10 @@ const Cliente = () => {
 
     return (
         <div className="container">
-            <h2>CLIENTES</h2>
+            <NavBar />
+            <div className="container-clientes">
+                <h2>CLIENTES</h2>
+            </div>
             <select name="" id="">{clientes.map(cliente => (
                 <option value={cliente.id}>{cliente.nome}</option>
             ))}</select>
