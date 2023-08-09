@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from './pages/Home.js';
+import Home2 from './pages/home2.js';
 import Cliente from "./pages/cliente.js"
 import Funcionario from "./pages/funcionario.js";
 import Produto from "./pages/produto.js";
@@ -15,7 +16,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home />} />
+          <Route exact path='/' element={<Home2 />} />
           <Route path='/clientes' element={<Cliente />} />
           <Route path='/funcionarios' element={<Funcionario />} />
           <Route path='/produtos' element={<Produto />} />

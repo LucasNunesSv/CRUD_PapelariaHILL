@@ -2,7 +2,7 @@ import {db} from "../infra/database.js";
 
 export const getProdutos = (_, res) => {
 
-    const q = "SELECT * FROM produto ORDER BY id_categoria_produto, nome";
+    const q = "SELECT produto.id_produto, produto.nome, produto.preco_unitario, produto.marca, produto.estoque, categoria_produto.descricao AS categoria_produto FROM produto JOIN categoria_produto ON produto.id_categoria_produto = categoria_produto.id_categoria_produto";
 
     db.query(q, (err, data) => {
 
@@ -16,7 +16,7 @@ export const getProdutos = (_, res) => {
 
 export const getProduto = (req, res) => {
 
-    const q = "SELECT * FROM cliente WHERE id_produto = ?"; // !!! ATUALIZAR
+    const q = "SELECT * FROM produto WHERE id_produto = ?"; 
 
     db.query(q, [req.params.id], (err, data) => {
 

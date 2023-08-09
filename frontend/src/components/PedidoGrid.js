@@ -3,7 +3,7 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios"; 
 
-function PedidoGrid ({ pedidos, setOnEditPedido, getPedidos, clientes, funcionarios, produtos, pagamentos }) {
+function PedidoGrid ({ pedidos, setOnEditPedido, getPedidos }) {
 
     const handleEdit = (item) => {
         setOnEditPedido(item);
@@ -45,28 +45,12 @@ function PedidoGrid ({ pedidos, setOnEditPedido, getPedidos, clientes, funcionar
                         <tr key={i}>
                             <td width="30%">{item.data}</td>
                             <td width="20%">{item.valor_total}</td>
-                            <td width="30%">{item.descricao}</td>
+                            <td width="30%">{item.descricao_pedido}</td>
                             <td width="20%">{item.quantidade}</td>
-                            <td width="20%">{funcionarios.map(funcionario => {
-                                if(item.id_funcionario == funcionario.id_funcionario){
-                                    return funcionario.nome
-                                }
-                            })}</td>
-                            <td width="20%">{clientes.map(cliente => {
-                                if(item.id_cliente === cliente.id_cliente){
-                                    return cliente.nome
-                                }
-                            })}</td>
-                            <td width="20%">{produtos.map(produto => {
-                                if(item.id_produto === produto.id_produto){
-                                    return produto.nome
-                                }
-                            })}</td>
-                            <td width="20%">{pagamentos.map(pagamento => {
-                                if(item.id_metodo_pagamento === pagamento.id_metodo_pagamento){
-                                    return pagamento.descricao
-                                }
-                            })}</td>
+                            <td width="20%">{item.funcionario_nome}</td>
+                            <td width="20%">{item.cliente_nome}</td>
+                            <td width="20%">{item.produto_nome}</td>
+                            <td width="20%">{item.metodo_pagamento}</td>
                             <td alignCenter width="5%">
                                 <FaEdit onClick={() => handleEdit(item)} />
                             </td>

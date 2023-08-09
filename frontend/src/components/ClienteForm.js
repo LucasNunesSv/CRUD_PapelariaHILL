@@ -2,6 +2,8 @@ import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import "../styles/globalForm.css"
+
 function ClienteForm({ onEdit, setOnEdit, getClientes }) {
 
     const ref = useRef();
@@ -21,11 +23,8 @@ function ClienteForm({ onEdit, setOnEdit, getClientes }) {
 
         const cliente = ref.current;
 
-        if (
-            !cliente.nome.value ||
-            !cliente.telefone.value
-        ) {
-            return toast.warn("Preencha todos os campos obrigatórios")
+        if (!cliente.nome.value ) {
+            return toast.warn("Preencha todos os campos obrigatórios *")
         }
 
         if (onEdit) {
@@ -60,12 +59,14 @@ function ClienteForm({ onEdit, setOnEdit, getClientes }) {
     return (
         <div className="formContainer">
 
-            <h3>FORM</h3>
+            <div class="titleSection">
+                <h1>Clientes</h1>
+            </div>
 
             <form ref={ref} onSubmit={handleSubmit}>
 
                 <div className="inputArea">
-                    <label>Nome</label>
+                    <label>Nome<span>*</span></label>
                     <input name="nome"/>
                 </div>
 

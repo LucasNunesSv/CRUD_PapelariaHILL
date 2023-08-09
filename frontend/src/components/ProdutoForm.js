@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "../styles/globalForm.css"
 
 function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias }) {
 
@@ -28,10 +29,7 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
         if (
             !produto.nome.value ||
             !produto.preco_unitario.value ||
-            !produto.marca.value ||
-            !produto.estoque.value ||
-            !produto.id_categoria_produto.value
-
+            !produto.estoque.value 
         ) {
             return toast.warn("Preencha todos os campos obrigatórios")
         }
@@ -74,7 +72,9 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
     return (
         <div className="formContainer">
 
-            <h3>FORM</h3>
+            <div class="titleSection">
+                <h1>Produtos</h1>
+            </div>
 
             <form ref={ref} onSubmit={handleSubmit}>
 

@@ -2,7 +2,7 @@ import {db} from "../infra/database.js";
 
 export const getFuncionarios = (_, res) => {
 
-    const q = "SELECT * FROM funcionario";
+    const q = "SELECT funcionario.id_funcionario, funcionario.nome, funcionario.endereco, funcionario.telefone, cargo.descricao AS cargo FROM funcionario JOIN cargo ON funcionario.id_cargo = cargo.id_cargo ORDER BY nome, cargo";
 
     db.query(q, (err, data) => {
 
@@ -14,10 +14,9 @@ export const getFuncionarios = (_, res) => {
 
 }
 
-
 export const getFuncionario = (req, res) => {
 
-    const q = "SELECT * FROM cliente WHERE id_cliente = ?";
+    const q = "SELECT * FROM funcionario WHERE id_funcionario = ?";
 
     db.query(q, [req.params.id], (err, data) => {
 

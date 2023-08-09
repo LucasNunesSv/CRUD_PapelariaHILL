@@ -30,12 +30,15 @@ const Cliente = () => {
     return (
         <div className="container">
             <NavBar />
+<<<<<<< HEAD
             <div className="container-clientes">
                 <h2>CLIENTES</h2>
             </div>
             <select name="" id="">{clientes.map(cliente => (
                 <option value={cliente.id}>{cliente.nome}</option>
             ))}</select>
+=======
+>>>>>>> 79e9edbeeb12db1fbfab9f747562506114d6ce08
             <ClienteForm onEdit={onEdit} setOnEdit={setOnEdit} getClientes={getClientes} />
             <ClienteGrid clientes={clientes} setOnEdit={setOnEdit} getClientes={getClientes} />
 

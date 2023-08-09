@@ -2,7 +2,7 @@ import {db} from "../infra/database.js";
 
 export const getClientes = (_, res) => {
 
-    const q = "SELECT * FROM cliente";
+    const q = "SELECT * FROM cliente ORDER BY nome";
 
     db.query(q, (err, data) => {
 

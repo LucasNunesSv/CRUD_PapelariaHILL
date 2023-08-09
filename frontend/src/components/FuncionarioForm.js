@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "../styles/globalForm.css"
 
 function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionarios, cargos }) {
 
@@ -25,11 +26,9 @@ function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionar
 
         if (
             !funcionario.nome.value ||
-            !funcionario.endereco.value ||
-            !funcionario.telefone.value ||
             !funcionario.id_cargo.value
         ) {
-            return toast.warn("Preencha todos os campos obrigatórios")
+            return toast.warn("Preencha todos os campos obrigatórios *")
         }
 
         if (onEditFuncionario) {
@@ -67,12 +66,14 @@ function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionar
     return (
         <div className="formContainer">
 
-            <h3>FORM</h3>
+            <div class="titleSection">
+                <h1>Funcionarios</h1>
+            </div>
 
             <form ref={ref} onSubmit={handleSubmit}>
 
-                <div className="inputArea">
-                    <label>Nome</label>
+                <div class="inputArea" className="inputArea">
+                    <label>Nome<span>*</span></label>
                     <input name="nome" />
                 </div>
 
@@ -87,7 +88,7 @@ function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionar
                 </div>
 
                 <div className="inputArea">
-                    <label>Cargo</label>
+                    <label>Cargo<span>*</span></label>
                     <select name="id_cargo">
                         {cargos.map(cargo => (
                             <option value={cargo.id_cargo}>{cargo.descricao}</option>

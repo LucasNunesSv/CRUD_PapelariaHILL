@@ -3,7 +3,7 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios"; 
 
-function ProdutoGrid ({ produtos, setOnEditProduto, getProdutos, categorias }) {
+function ProdutoGrid ({ produtos, setOnEditProduto, getProdutos }) {
 
     const handleEdit = (item) => {
         setOnEditProduto(item);
@@ -44,11 +44,7 @@ function ProdutoGrid ({ produtos, setOnEditProduto, getProdutos, categorias }) {
                             <td width="20%">{item.preco_unitario}</td>
                             <td width="30%">{item.marca}</td>
                             <td width="20%">{item.estoque}</td>
-                            <td width="20%">{categorias.map(categoria => {
-                                if(item.id_categoria_produto === categoria.id_categoria_produto){
-                                    return categoria.descricao
-                                }
-                            })}</td>
+                            <td width="20%">{item.categoria_produto}</td>
                             <td alignCenter width="5%">
                                 <FaEdit onClick={() => handleEdit(item)} />
                             </td>
