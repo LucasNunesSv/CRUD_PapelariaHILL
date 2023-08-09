@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavBar from "../components/NavBar.js";
+
 
 const Pedido = () => {
 
@@ -82,10 +84,7 @@ const Pedido = () => {
 
     return (
         <div className="container">
-           <h2>PEDIDOS</h2> 
-           <select name="" id="">{pagamentos.map(pagamento => (
-                <option value={pagamento.id_metodo_pagamento}>{pagamento.descricao}</option>
-           ))}</select>
+            <NavBar />
            <PedidoForm onEditPedido={onEditPedido} setOnEditPedido={setOnEditPedido} getPedidos={getPedidos} clientes={clientes} funcionarios={funcionarios} produtos={produtos} pagamentos={pagamentos} />
            <PedidoGrid pedidos={pedidos} setOnEditPedido={setOnEditPedido} getPedidos={getPedidos} />
         </div>

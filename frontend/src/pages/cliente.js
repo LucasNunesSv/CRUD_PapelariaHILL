@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavBar from "../components/NavBar.js";
+
 
 const Cliente = () => {
 
@@ -28,10 +30,7 @@ const Cliente = () => {
 
     return (
         <div className="container">
-            <h2>CLIENTES</h2>
-            <select name="" id="">{clientes.map(cliente => (
-                <option value={cliente.id}>{cliente.nome}</option>
-            ))}</select>
+            <NavBar />
             <ClienteForm onEdit={onEdit} setOnEdit={setOnEdit} getClientes={getClientes} />
             <ClienteGrid clientes={clientes} setOnEdit={setOnEdit} getClientes={getClientes} />
 

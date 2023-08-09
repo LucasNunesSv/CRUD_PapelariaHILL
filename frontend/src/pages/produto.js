@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/NavBar.js";
 
 const Produto = () => {
 
@@ -42,10 +42,6 @@ const Produto = () => {
     return (
         <div className="container">
             <NavBar />
-            <h2>PRODUTOS</h2>
-            <select name="" id="">{produtos.map(produto => (
-                <option value={produto.id_produto}>{produto.nome}</option>
-            ))}</select>
             <ProdutoForm onEditProduto={onEditProduto} setOnEditProduto={setOnEditProduto} getProdutos={getProdutos} categorias={categorias} />
             <ProdutoGrid produtos={produtos} setOnEditProduto={setOnEditProduto} getProdutos={getProdutos} />
 

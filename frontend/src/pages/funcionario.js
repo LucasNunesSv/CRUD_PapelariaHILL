@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavBar from "../components/NavBar.js";
+
 
 const Funcionario = () => {
 
@@ -40,10 +42,7 @@ const Funcionario = () => {
 
     return (
         <div className="container">
-           <h2>FUNCIONARIOS</h2> 
-           <select name="" id="">{cargos.map(cargo => (
-                <option value={cargo.id_cargo}>{cargo.descricao}</option>
-           ))}</select>
+            <NavBar />
            <FuncionarioForm onEditFuncionario={onEditFuncionario} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} cargos={cargos} />
            <FuncionarioGrid funcionarios={funcionarios} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} />
            

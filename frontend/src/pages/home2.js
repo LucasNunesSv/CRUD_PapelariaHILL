@@ -3,11 +3,14 @@ import Foto1 from "../assets/1.png"
 import Foto2 from "../assets/2.png"
 import Foto3 from "../assets/3.png"
 import LogoIcon from "../assets/logoIcon.png"
+import NavBar from "../components/NavBar.js";
+
 
 const Home2 = () => {
 
     return(
         <div className="homeContainer">
+            <NavBar />
             <div className="header">
                 <h2>Bem-vindo ao nosso sistema de gerenciamento da loja</h2>
                 <h1>HILL Personalizados</h1>

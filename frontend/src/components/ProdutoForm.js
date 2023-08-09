@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "../styles/globalForm.css"
 
 function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias }) {
 
@@ -71,7 +72,9 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
     return (
         <div className="formContainer">
 
-            <h3>FORM</h3>
+            <div class="titleSection">
+                <h1>Produtos</h1>
+            </div>
 
             <form ref={ref} onSubmit={handleSubmit}>
 

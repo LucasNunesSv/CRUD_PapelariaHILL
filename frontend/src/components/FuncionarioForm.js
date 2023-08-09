@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "../styles/globalForm.css"
 
 function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionarios, cargos }) {
 
@@ -65,11 +66,13 @@ function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionar
     return (
         <div className="formContainer">
 
-            <h3>FORM</h3>
+            <div class="titleSection">
+                <h1>Funcionarios</h1>
+            </div>
 
             <form ref={ref} onSubmit={handleSubmit}>
 
-                <div className="inputArea">
+                <div class="inputArea" className="inputArea">
                     <label>Nome<span>*</span></label>
                     <input name="nome" />
                 </div>

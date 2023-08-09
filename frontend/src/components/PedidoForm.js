@@ -2,6 +2,8 @@ import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import "../styles/globalForm.css"
+
 function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funcionarios, produtos, pagamentos }) {
 
     const ref = useRef();
@@ -29,6 +31,7 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
         const pedido = ref.current;
 
         if (
+            !pedido.data.value ||
             !pedido.valor_total.value ||
             !pedido.id_funcionario.value ||
             !pedido.id_cliente.value ||
@@ -92,12 +95,14 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
     return (
         <div className="formContainer">
 
-            <h3>FORM</h3>
+            <div class="titleSection">
+                <h1>Pedidos</h1>
+            </div>
 
             <form ref={ref} onSubmit={handleSubmit}>
 
                 <div className="inputArea">
-                    <label>Data da Venda</label>
+                    <label>Data da Venda<span>*</span></label>
                     <input type="date" name="data" />
                 </div>
 
