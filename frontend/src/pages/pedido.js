@@ -87,7 +87,7 @@ const Pedido = () => {
                 <option value={pagamento.id_metodo_pagamento}>{pagamento.descricao}</option>
            ))}</select>
            <PedidoForm onEditPedido={onEditPedido} setOnEditPedido={setOnEditPedido} getPedidos={getPedidos} clientes={clientes} funcionarios={funcionarios} produtos={produtos} pagamentos={pagamentos} />
-           <PedidoGrid pedidos={pedidos} setOnEditPedido={setOnEditPedido} getPedidos={getPedidos} clientes={clientes} funcionarios={funcionarios} produtos={produtos} pagamentos={pagamentos} />
+           <PedidoGrid pedidos={pedidos} setOnEditPedido={setOnEditPedido} getPedidos={getPedidos} />
         </div>
     );
 };

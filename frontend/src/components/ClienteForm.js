@@ -21,11 +21,8 @@ function ClienteForm({ onEdit, setOnEdit, getClientes }) {
 
         const cliente = ref.current;
 
-        if (
-            !cliente.nome.value ||
-            !cliente.telefone.value
-        ) {
-            return toast.warn("Preencha todos os campos obrigatórios")
+        if (!cliente.nome.value ) {
+            return toast.warn("Preencha todos os campos obrigatórios *")
         }
 
         if (onEdit) {
@@ -65,7 +62,7 @@ function ClienteForm({ onEdit, setOnEdit, getClientes }) {
             <form ref={ref} onSubmit={handleSubmit}>
 
                 <div className="inputArea">
-                    <label>Nome</label>
+                    <label>Nome<span>*</span></label>
                     <input name="nome"/>
                 </div>
 

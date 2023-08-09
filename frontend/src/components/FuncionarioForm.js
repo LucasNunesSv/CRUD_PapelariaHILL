@@ -25,11 +25,9 @@ function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionar
 
         if (
             !funcionario.nome.value ||
-            !funcionario.endereco.value ||
-            !funcionario.telefone.value ||
             !funcionario.id_cargo.value
         ) {
-            return toast.warn("Preencha todos os campos obrigatórios")
+            return toast.warn("Preencha todos os campos obrigatórios *")
         }
 
         if (onEditFuncionario) {
@@ -72,7 +70,7 @@ function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionar
             <form ref={ref} onSubmit={handleSubmit}>
 
                 <div className="inputArea">
-                    <label>Nome</label>
+                    <label>Nome<span>*</span></label>
                     <input name="nome" />
                 </div>
 
@@ -87,7 +85,7 @@ function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionar
                 </div>
 
                 <div className="inputArea">
-                    <label>Cargo</label>
+                    <label>Cargo<span>*</span></label>
                     <select name="id_cargo">
                         {cargos.map(cargo => (
                             <option value={cargo.id_cargo}>{cargo.descricao}</option>

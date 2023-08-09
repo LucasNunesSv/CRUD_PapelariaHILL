@@ -29,17 +29,14 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
         const pedido = ref.current;
 
         if (
-            !pedido.data.value ||
             !pedido.valor_total.value ||
-            !pedido.descricao.value ||
-            !pedido.quantidade.value ||
             !pedido.id_funcionario.value ||
             !pedido.id_cliente.value ||
             !pedido.id_produto.value ||
             !pedido.id_metodo_pagamento.value
 
         ) {
-            return toast.warn("Preencha todos os campos obrigatórios")
+            return toast.warn("Preencha todos os campos obrigatórios *")
         }
 
         if (onEditPedido) {
@@ -69,7 +66,13 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
                     id_metodo_pagamento: pedido.id_metodo_pagamento.value,
                 })
                 .then(({ data }) => toast.success(data))
-                .catch(({ data }) => toast.error(data));
+                .catch((error) => {
+                    if (error.response && error.response.data) {
+                        toast.error(error.response.data.message);
+                    } else {
+                        toast.error("Erro na requisição");
+                    }
+                });
         }
 
         pedido.data.value = ""
@@ -99,7 +102,7 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
                 </div>
 
                 <div className="inputArea">
-                    <label>Valor Total</label>
+                    <label>Valor Total<span>*</span></label>
                     <input name="valor_total" />
                 </div>
 
@@ -114,7 +117,7 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
                 </div>
 
                 <div className="inputArea">
-                    <label>Vendedor(a)</label>
+                    <label>Vendedor(a)<span>*</span></label>
                     <select name="id_funcionario">
                         {funcionarios.map(funcionario => (
                             <option value={funcionario.id_funcionario}>{funcionario.nome}</option>
@@ -123,7 +126,7 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
                 </div>
 
                 <div className="inputArea">
-                    <label>Cliente</label>
+                    <label>Cliente<span>*</span></label>
                     <select name="id_cliente">
                         {clientes.map(cliente => (
                             <option value={cliente.id_cliente}>{cliente.nome}</option>
@@ -132,7 +135,7 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
                 </div>
 
                 <div className="inputArea">
-                    <label>Produto Base</label>
+                    <label>Produto Base<span>*</span></label>
                     <select name="id_produto">
                         {produtos.map(produto => (
                             <option value={produto.id_produto}>{produto.nome}</option>
@@ -141,7 +144,7 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
                 </div>
 
                 <div className="inputArea">
-                    <label>Método de Pagamento</label>
+                    <label>Método de Pagamento<span>*</span></label>
                     <select name="id_metodo_pagamento">
                         {pagamentos.map(pagamento => (
                             <option value={pagamento.id_metodo_pagamento}>{pagamento.descricao}</option>

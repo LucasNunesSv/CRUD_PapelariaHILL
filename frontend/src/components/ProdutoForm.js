@@ -28,10 +28,7 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
         if (
             !produto.nome.value ||
             !produto.preco_unitario.value ||
-            !produto.marca.value ||
-            !produto.estoque.value ||
-            !produto.id_categoria_produto.value
-
+            !produto.estoque.value 
         ) {
             return toast.warn("Preencha todos os campos obrigatórios")
         }

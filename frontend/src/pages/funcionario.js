@@ -45,7 +45,7 @@ const Funcionario = () => {
                 <option value={cargo.id_cargo}>{cargo.descricao}</option>
            ))}</select>
            <FuncionarioForm onEditFuncionario={onEditFuncionario} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} cargos={cargos} />
-           <FuncionarioGrid funcionarios={funcionarios} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} cargos={cargos}/>
+           <FuncionarioGrid funcionarios={funcionarios} setOnEditFuncionario={setOnEditFuncionario} getFuncionarios={getFuncionarios} />
            
         </div>
     );

@@ -47,7 +47,7 @@ const Produto = () => {
                 <option value={produto.id_produto}>{produto.nome}</option>
             ))}</select>
             <ProdutoForm onEditProduto={onEditProduto} setOnEditProduto={setOnEditProduto} getProdutos={getProdutos} categorias={categorias} />
-            <ProdutoGrid produtos={produtos} setOnEditProduto={setOnEditProduto} getProdutos={getProdutos} categorias={categorias} />
+            <ProdutoGrid produtos={produtos} setOnEditProduto={setOnEditProduto} getProdutos={getProdutos} />
 
         </div>
     );
