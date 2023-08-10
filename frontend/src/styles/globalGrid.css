@@ -1,0 +1,41 @@
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+table {
+    width: 80%;
+    margin: 20px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #47919F;
+    color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.edit-icon, .delete-icon {
+    cursor: pointer;
+    color: #13535d;
+    transition: color 0.3s;
+}
+
+.delete-icon:hover {
+    color: #e74c3c;
+}
+.edit-icon:hover{
+    color: rgb(234, 132, 30);
+}

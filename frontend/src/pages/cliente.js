@@ -1,4 +1,3 @@
-import "../styles/cliente.css";
 import ClienteForm from "../components/ClienteForm.js"
 import ClienteGrid from "../components/ClienteGrid.js"
 import { useState, useEffect } from "react";
@@ -14,7 +13,7 @@ const Cliente = () => {
 
     const getClientes = async () => {
         try {
-            const res = await axios.get("http://localhost:3306/clientes");
+            const res = await axios.get("http://localhost:8800/clientes");
             // setClientes(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)));
             setClientes(res.data);
             console.log(res.data)
@@ -30,15 +29,6 @@ const Cliente = () => {
     return (
         <div className="container">
             <NavBar />
-<<<<<<< HEAD
-            <div className="container-clientes">
-                <h2>CLIENTES</h2>
-            </div>
-            <select name="" id="">{clientes.map(cliente => (
-                <option value={cliente.id}>{cliente.nome}</option>
-            ))}</select>
-=======
->>>>>>> 79e9edbeeb12db1fbfab9f747562506114d6ce08
             <ClienteForm onEdit={onEdit} setOnEdit={setOnEdit} getClientes={getClientes} />
             <ClienteGrid clientes={clientes} setOnEdit={setOnEdit} getClientes={getClientes} />
 

@@ -99,7 +99,7 @@ function PedidoForm({ onEditPedido, setOnEditPedido, getPedidos, clientes, funci
                 <h1>Pedidos</h1>
             </div>
 
-            <form ref={ref} onSubmit={handleSubmit}>
+            <form autoComplete="off" ref={ref} onSubmit={handleSubmit}>
 
                 <div className="inputArea">
                     <label>Data da Venda<span>*</span></label>

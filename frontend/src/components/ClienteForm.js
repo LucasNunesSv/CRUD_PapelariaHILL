@@ -63,7 +63,7 @@ function ClienteForm({ onEdit, setOnEdit, getClientes }) {
                 <h1>Clientes</h1>
             </div>
 
-            <form ref={ref} onSubmit={handleSubmit}>
+            <form autoComplete="off" ref={ref} onSubmit={handleSubmit}>
 
                 <div className="inputArea">
                     <label>Nome<span>*</span></label>

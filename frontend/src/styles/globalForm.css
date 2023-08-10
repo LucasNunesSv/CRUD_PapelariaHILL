@@ -1,10 +1,53 @@
-.titleSection{
+.titleSection {
     background-color: #47919F;
     color: #fff;
-
+    padding: 7px 0;
 
 }
 
-.inputArea label span{
+.formContainer form {
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.inputArea {
+    margin: 10px 0;
+}
+
+.formContainer form button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: large;
+    border: 3px solid #47919F;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    transition: 0.3s;
+    cursor: pointer;
+
+}
+
+.formContainer form button:hover {
+    background-color: #47919F;
+    color: #fff;
+}
+
+.inputArea label {
+    margin-right: 60px;
+    font-size: 20px;
+}
+
+.inputArea input, .inputArea select {
+    padding: 5px 10px;
+    width: 400px;
+    border: 3px solid #47919F;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.inputArea label span {
     color: red;
 }

@@ -1,4 +1,3 @@
-import "../styles/pedido.css";
 import PedidoForm from "../components/PedidoForm.js"
 import PedidoGrid from "../components/PedidoGrid.js"
 import { useState, useEffect } from "react";

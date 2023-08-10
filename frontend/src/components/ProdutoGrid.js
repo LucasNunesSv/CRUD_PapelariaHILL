@@ -2,6 +2,8 @@ import React from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios"; 
+import "../styles/globalGrid.css"
+
 
 function ProdutoGrid ({ produtos, setOnEditProduto, getProdutos }) {
 
@@ -22,39 +24,38 @@ function ProdutoGrid ({ produtos, setOnEditProduto, getProdutos }) {
 
     return(
         <div className="gridContainer">
-
-            <h3>GRID</h3>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Preço Unitário</th>
-                        <th>Marca</th>
-                        <th>Estoque</th>
-                        <th>Categoria</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {produtos.map((item, i) => (
-                        <tr key={i}>
-                            <td width="30%">{item.nome}</td>
-                            <td width="20%">{item.preco_unitario}</td>
-                            <td width="30%">{item.marca}</td>
-                            <td width="20%">{item.estoque}</td>
-                            <td width="20%">{item.categoria_produto}</td>
-                            <td alignCenter width="5%">
-                                <FaEdit onClick={() => handleEdit(item)} />
-                            </td>
-                            <td alignCenter width="5%">
-                                <FaTrash onClick={() => handleDelete(item.id_produto)} />
-                            </td>
+            <div className="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço Unitário</th>
+                            <th>Marca</th>
+                            <th>Estoque</th>
+                            <th>Categoria</th>
+                            <th></th>
+                            <th></th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {produtos.map((item, i) => (
+                            <tr key={i}>
+                                <td width="30%">{item.nome}</td>
+                                <td width="20%">{item.preco_unitario}</td>
+                                <td width="30%">{item.marca}</td>
+                                <td width="20%">{item.estoque}</td>
+                                <td width="20%">{item.categoria_produto}</td>
+                                <td alignCenter width="5%">
+                                    <FaEdit className="edit-icon" onClick={() => handleEdit(item)} />
+                                </td>
+                                <td alignCenter width="5%">
+                                    <FaTrash className="delete-icon" onClick={() => handleDelete(item.id_produto)} />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     );

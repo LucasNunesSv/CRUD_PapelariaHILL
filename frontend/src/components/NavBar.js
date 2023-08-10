@@ -11,7 +11,7 @@ const NavBar = () => {
 
                 <div class="menuContainer">
 
-                    <img class="logoNavbar" src={Logo} />
+                    <Link  className='linkLogo' to='/'><img class="logoNavbar" src={Logo} /></Link>
 
                     <ul>
                         <li>
@@ -29,7 +29,6 @@ const NavBar = () => {
                         <li>
                             <Link className='Links' to='/produtos'>Produtos</Link>
                         </li>
-
                     </ul>
 
                 </div>

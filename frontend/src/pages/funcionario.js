@@ -1,4 +1,3 @@
-import "../styles/funcionario.css";
 import FuncionarioForm from "../components/FuncionarioForm.js"
 import FuncionarioGrid from "../components/FuncionarioGrid.js"
 import { useState, useEffect } from "react";

@@ -76,7 +76,7 @@ function ProdutoForm({ onEditProduto, setOnEditProduto, getProdutos, categorias 
                 <h1>Produtos</h1>
             </div>
 
-            <form ref={ref} onSubmit={handleSubmit}>
+            <form autoComplete="off" ref={ref} onSubmit={handleSubmit}>
 
                 <div className="inputArea">
                     <label>Nome</label>

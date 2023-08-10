@@ -2,6 +2,8 @@ import React from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios"; 
+import "../styles/globalGrid.css"
+
 
 function PedidoGrid ({ pedidos, setOnEditPedido, getPedidos }) {
 
@@ -22,45 +24,44 @@ function PedidoGrid ({ pedidos, setOnEditPedido, getPedidos }) {
 
     return(
         <div className="gridContainer">
-
-            <h3>GRID</h3>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Valor Total</th>
-                        <th>Descrição</th>
-                        <th>Quantidade</th>
-                        <th>Vendedor</th>
-                        <th>Cliente</th>
-                        <th>Produto Base</th>
-                        <th>Metodo de Pagamento</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {pedidos.map((item, i) => (
-                        <tr key={i}>
-                            <td width="30%">{item.data}</td>
-                            <td width="20%">{item.valor_total}</td>
-                            <td width="30%">{item.descricao_pedido}</td>
-                            <td width="20%">{item.quantidade}</td>
-                            <td width="20%">{item.funcionario_nome}</td>
-                            <td width="20%">{item.cliente_nome}</td>
-                            <td width="20%">{item.produto_nome}</td>
-                            <td width="20%">{item.metodo_pagamento}</td>
-                            <td alignCenter width="5%">
-                                <FaEdit onClick={() => handleEdit(item)} />
-                            </td>
-                            <td alignCenter width="5%">
-                                <FaTrash onClick={() => handleDelete(item.id_pedido)} />
-                            </td>
+            <div className="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Valor Total</th>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Vendedor</th>
+                            <th>Cliente</th>
+                            <th>Produto Base</th>
+                            <th>Metodo de Pagamento</th>
+                            <th></th>
+                            <th></th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {pedidos.map((item, i) => (
+                            <tr key={i}>
+                                <td width="30%">{item.data}</td>
+                                <td width="20%">{item.valor_total}</td>
+                                <td width="30%">{item.descricao_pedido}</td>
+                                <td width="20%">{item.quantidade}</td>
+                                <td width="20%">{item.funcionario_nome}</td>
+                                <td width="20%">{item.cliente_nome}</td>
+                                <td width="20%">{item.produto_nome}</td>
+                                <td width="20%">{item.metodo_pagamento}</td>
+                                <td alignCenter width="5%">
+                                    <FaEdit className="edit-icon" onClick={() => handleEdit(item)} />
+                                </td>
+                                <td alignCenter width="5%">
+                                    <FaTrash className="delete-icon" onClick={() => handleDelete(item.id_pedido)} />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     );

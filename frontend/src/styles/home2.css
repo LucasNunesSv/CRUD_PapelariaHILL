@@ -5,6 +5,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 90px 0;
+    height: fit-content;
 }
 
 .header p, h1, h2{
@@ -43,7 +45,7 @@
 }
 
 .logoIcon{
-    padding-bottom: 50px;
+    padding-top: 15px;
 }
 
 .galery, .logoIcon {
@@ -55,5 +57,5 @@
 .header {
     background-color: #47919F;
     padding: 50px 0;
-    margin-bottom: 30px;
+    /* margin-bottom: 90px; */
 }

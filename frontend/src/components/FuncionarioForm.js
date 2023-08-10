@@ -70,7 +70,7 @@ function FuncionarioForm({ onEditFuncionario, setOnEditFuncionario, getFuncionar
                 <h1>Funcionarios</h1>
             </div>
 
-            <form ref={ref} onSubmit={handleSubmit}>
+            <form autoComplete="off" ref={ref} onSubmit={handleSubmit}>
 
                 <div class="inputArea" className="inputArea">
                     <label>Nome<span>*</span></label>

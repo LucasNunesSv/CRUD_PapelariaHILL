@@ -1,4 +1,3 @@
-import "../styles/produto.css";
 import ProdutoForm from "../components/ProdutoForm.js"
 import ProdutoGrid from "../components/ProdutoGrid.js"
 import { useState, useEffect } from "react";
